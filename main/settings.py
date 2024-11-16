@@ -25,12 +25,27 @@ SECRET_KEY = 'django-insecure-wh^lt38ut8ry5!b6y@c9ehg8#8-lu0(b3oe0s1iluo=d91*alg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',  # Your React app's URL (if it's running locally)
+]
+
+# cors allow all
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    # custom
+    'accounts',
+    'library',
+    'rest_framework',
+    'corsheaders',
+
+    # default
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +55,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # custom
+    'corsheaders.middleware.CorsMiddleware',
+
+    # default
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -117,7 +136,20 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Custom Settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+
+
