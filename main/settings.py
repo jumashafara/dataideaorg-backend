@@ -34,6 +34,8 @@ CORS_ALLOWED_ORIGINS = [
 # cors allow all
 CORS_ALLOW_ALL_ORIGINS = True
 
+AUTH_USER_MODEL = 'accounts.User'
+
 
 
 # Application definition
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     # custom
     'accounts',
     'library',
+    'school',
     'rest_framework',
     'corsheaders',
 

@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
 from django.http import FileResponse
 from rest_framework.response import Response
 from rest_framework import status, views

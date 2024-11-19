@@ -8,3 +8,5 @@ class Resource(models.Model):
     file = models.FileField(upload_to='library/', blank=True)
     def __str__(self):
         return self.name
+
+
