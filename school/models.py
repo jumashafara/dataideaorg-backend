@@ -16,6 +16,7 @@ class Activity(models.Model):
     completed = models.BooleanField(default=False)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, blank=True)
     url_link = models.URLField(blank=True)
+    attendees = models.ManyToManyField('accounts.User', blank=True)
 
     def __str__(self):
         return f'{self.name} ({self.get_category_display()})'
